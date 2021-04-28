@@ -1,8 +1,16 @@
 {
   "name": "rollup-plugin-sp-rest-proxy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
-  "main": "./dist/index.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.cjs"
+  },
   "scripts": {
     "build": "rimraf dist && rollup --config",
     "typecheck": "tsc --noEmit",

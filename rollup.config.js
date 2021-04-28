@@ -10,6 +10,13 @@ export default /** @type {import('rollup').RollupOptions} */ ({
       format: "es",
       sourcemap: true,
       entryFileNames: "[name].js",
-    }
+    },
+    {
+      dir: "dist",
+      format: "cjs",
+      sourcemap: true,
+      entryFileNames: "[name].cjs",
+      exports: "default",
+    },
   ],
 });
