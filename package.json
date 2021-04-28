@@ -1,11 +1,12 @@
 {
   "name": "rollup-plugin-sp-rest-proxy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./dist/index.ts",
   "scripts": {
     "build": "rimraf dist && rollup --config",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
