@@ -1,0 +1,41 @@
+{
+  "name": "rollup-plugin-sp-rest-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.ts",
+  "scripts": {
+    "build": "rimraf dist && rollup --config",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rquanx/rollup-plugin-sp-rest-proxy.git"
+  },
+  "keywords": [
+    "rollup",
+    "plugin",
+    "sp-rest-proxy",
+    "rollup-plugin",
+    "SharePoint",
+    "vite",
+    "vite-plugin"
+  ],
+  "author": "rquanx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rquanx/rollup-plugin-sp-rest-proxy/issues"
+  },
+  "homepage": "https://github.com/rquanx/rollup-plugin-sp-rest-proxy#readme",
+  "dependencies": {
+    "portfinder": "^1.0.28",
+    "sp-rest-proxy": "^3.0.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/node": "^15.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.45.2",
+    "typescript": "^4.2.4",
+    "vite": "^2.2.3"
+  }
+}
