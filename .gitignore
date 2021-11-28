@@ -5,4 +5,3 @@ coverage
 .code
 .DS_Store
 yarn.lock
-package-lock.json
