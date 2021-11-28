@@ -13,8 +13,7 @@
   },
   "scripts": {
     "build": "rimraf dist && rollup --config",
-    "typecheck": "tsc --noEmit",
-    "prepublish": "npm run build"
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist"
