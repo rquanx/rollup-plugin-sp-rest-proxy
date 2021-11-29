@@ -9,11 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
+      - uses: actions/setup-node@v2 # node环境功能包
+        with:                       # 给包配置参数
           node-version: 14
       - run: npm ci
       - run: npm run build
+      - uses: actions/upload-artifact@v2 # 使用upload-artifact包用于上传结果
+        with:
+          name: dist  # 产物名，用于下载时查找
+          path: ./dist # 保持结果给下一步骤使用
 
   publish-npm:
     needs: build
@@ -24,6 +28,10 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: ./dist
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
