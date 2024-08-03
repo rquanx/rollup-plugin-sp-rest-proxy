@@ -63,9 +63,9 @@ export class RollupPluginSPRestProxy {
     } else if (!config.server?.proxy) {
       config.server.proxy = proxy;
     } else {
-      if (config.server?.proxy?.["/_api"]) {
+      if (config.server?.proxy?.["^/.*_api"]) {
         console.warn(
-          "/_api proxy already exists,rollup-plugin-sp-rest-proxy will override this proxy setting"
+          "^/.*_api proxy already exists,rollup-plugin-sp-rest-proxy will override this proxy setting"
         );
       }
       config.server.proxy = {
