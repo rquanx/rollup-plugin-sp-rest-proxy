@@ -12,9 +12,10 @@ export class RollupPluginSPRestProxy {
   }
 
   viteProxySetting(proxy?: Record<string, string | ProxyOptions> | undefined) {
+    const targetBase = `http://${this.settings.hostname}:${this.settings.port}`;
     return {
-      "/_api": {
-        target: `http://${this.settings.hostname}:${this.settings.port}/`,
+      "^/.*_api": {
+        target: targetBase,
         changeOrigin: true,
         secure: false,
       },
