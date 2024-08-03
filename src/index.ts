@@ -14,12 +14,12 @@ export class RollupPluginSPRestProxy {
   viteProxySetting(proxy?: Record<string, string | ProxyOptions> | undefined) {
     const targetBase = `http://${this.settings.hostname}:${this.settings.port}`;
     return {
+      ...(proxy ?? {}),
       "^/.*_api": {
         target: targetBase,
         changeOrigin: true,
         secure: false,
       },
-      ...(proxy ?? {}),
     };
   }
 
