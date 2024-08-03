@@ -5,9 +5,8 @@ import { UserConfig, ProxyOptions } from "vite";
 export class RollupPluginSPRestProxy {
   private settings: IProxySettings;
   private serve: RestProxy;
-  constructor(
-    settings = { port: 9090, hostname: "localhost" } as IProxySettings
-  ) {
+
+  constructor(settings: IProxySettings = { port: 9090, hostname: "localhost" }) {
     this.settings = settings;
     this.serve = new RestProxy(this.settings);
   }
