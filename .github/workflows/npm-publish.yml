@@ -4,34 +4,37 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2 # node环境功能包
-        with:                       # 给包配置参数
-          node-version: 14
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5 # node环境功能包
+        with: # 给包配置参数
+          node-version: 22
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v2 # 使用upload-artifact包用于上传结果
+      - uses: actions/upload-artifact@v6 # 使用upload-artifact包用于上传结果
         with:
-          name: dist  # 产物名，用于下载时查找
+          name: dist # 产物名，用于下载时查找
           path: ./dist # 保持结果给下一步骤使用
 
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 14
+          node-version: 22
           registry-url: https://registry.npmjs.org/
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v7
         with:
           name: dist
           path: ./dist
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm install -g npm@latest # 处理 **Access token expired or revoked.** Please try logging in again.
+      - run: npm publish --provenance
