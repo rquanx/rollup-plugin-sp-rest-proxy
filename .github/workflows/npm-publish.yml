@@ -36,5 +36,5 @@ jobs:
         with:
           name: dist
           path: ./dist
-      - run: npm install -g npm@latest # 处理 **Access token expired or revoked.** Please try logging in again.
+      - run: npm install -g npm@10 # 处理 **Access token expired or revoked.** Please try logging in again.
       - run: npm publish --provenance
